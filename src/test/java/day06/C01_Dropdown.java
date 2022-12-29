@@ -65,23 +65,17 @@ public class C01_Dropdown {
     public void tearDown(){
         driver.close();
     }
-
-//    REUSABLE METHOD:
-
     /*
     1. What is dropdown? Dropdown nedir?
     Dropdown liste olusturmak icin kullanilir.
-
     2. How to handle dropdown elements? Dropdown nasil automate edilir?
     -dropdown i locate ederim
     -select objesi olustururum
     -select objesi ile istedigim secenegi secerim
     NOT: select objesi olusturma nedenim, dropdownlarin Select classi ile olusturulmasi
-
     3. Tum dropdown seceneklerini nasil print ederiz?
     - tum dropdown elementlerini getOptions() methodu ile listeye koyariz
     - sonra secenekleri loop ile yazdirabilirz
-
     4. Bir secenegin secili oldugunu otomate etmek icin ne yapilir?
     Ornek: Gun olarak 10 i secdik ama ya secilmediyse?
     getFirstSelectedOption() secili olan secenegi return eder
