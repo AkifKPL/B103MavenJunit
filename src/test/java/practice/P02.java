@@ -22,7 +22,7 @@ public class P02 {
         //fill the firstname
         WebElement firstname = driver.findElement(By.xpath("//*[@name='firstname']"));
         firstname.sendKeys("Erol",Keys.TAB,"Evren",Keys.TAB,Keys.ARROW_RIGHT,Keys.TAB,
-                Keys.ARROW_RIGHT,Keys.ARROW_RIGHT,Keys.ARROW_RIGHT,Keys.TAB,"12/12/2022",Keys.TAB,Keys.TAB
+                Keys.ARROW_RIGHT,Keys.ARROW_RIGHT,Keys.ARROW_RIGHT,Keys.TAB, "day12/12/2022",Keys.TAB,Keys.TAB
                 ,Keys.SPACE,Keys.TAB,Keys.TAB,Keys.TAB,Keys.SPACE,Keys.TAB,"Africa",Keys.TAB,Keys.LEFT_CONTROL,
                 Keys.SPACE,Keys.ARROW_DOWN,Keys.SPACE,Keys.ARROW_DOWN,Keys.SPACE,Keys.TAB,Keys.TAB,Keys.TAB,Keys.ENTER);
 
