@@ -9,41 +9,74 @@ import org.openqa.selenium.WindowType;
 import utilities.TestBase;
 
 public class C02_WindowHandle extends TestBase {
+
+
+    // ...Exercise 2...
+
+
+    // 1- https://www.amazon.com sayfasina gidelim
+    // 2- url'in 'amazon' icerdigini test edelim
+    // 3- yeni bir pencere acip https://www.bestbuy.com sayfasina gidelim
+    // 4- title'in 'Best Buy' icerdigini test edelim
+    // 5- ilk sayfaya(amazon) donup sayfada java aratalım
+    // 6- arama sonuclarının 'Java' icerdigini test edelim
+    // 7- ikinci sayfaya(bestbuy) donelim
+    // 8- logonun gorundugunu test edelim
+
+
     @Test
     public void test02() {
 
         // 1- https://www.amazon.com sayfasina gidelim
         driver.get("https://www.amazon.com");
-        String firstHandle = driver.getWindowHandle();
+        String sayfa1Handle=driver.getWindowHandle();
+
 
         // 2- url'in 'amazon' icerdigini test edelim
-        String url = driver.getCurrentUrl();
-        Assert.assertTrue(url.contains("amazon"));
+        String amazonUrl=driver.getCurrentUrl();
+        Assert.assertTrue(amazonUrl.contains("amazon"));
+
 
         // 3- yeni bir pencere acip https://www.bestbuy.com sayfasina gidelim
         driver.switchTo().newWindow(WindowType.WINDOW);
         driver.get("https://www.bestbuy.com");
-        String secondHandle = driver.getWindowHandle();
+        String sayfa2Handle=driver.getWindowHandle();
+
+
 
         // 4- title'in 'Best Buy' icerdigini test edelim
-        String baslik = driver.getTitle();
-        Assert.assertTrue(baslik.contains("Best Buy"));
+        String bestBuyTitle=driver.getTitle();
+        Assert.assertTrue(bestBuyTitle.contains("Best Buy"));
 
-        // 5- ilk sayfaya(amazon) donup sayfada java aratalım
-        driver.switchTo().window(firstHandle);
-        WebElement searchBox = driver.findElement(By.xpath("//*[@id='twotabsearchtextbox']"));
-        searchBox.sendKeys("java", Keys.ENTER);
+
+        // 5- ilk sayfaya(amazon) donup sayfada Java aratalım
+        driver.switchTo().window(sayfa1Handle);
+        WebElement amazonAramaMot=driver.findElement(By.xpath("//input[@id='twotabsearchtextbox']"));
+        amazonAramaMot.sendKeys("Java" + Keys.ENTER);
+
+
 
         // 6- arama sonuclarının 'Java' icerdigini test edelim
-        WebElement result = driver.findElement(By.xpath("(//*[@class='a-size-base-plus a-color-base a-text-normal'])[2]"));
-        String resultText = result.getText();
-        Assert.assertTrue(resultText.contains("Java"));
+        WebElement aramaSonucu=driver.findElement(By.xpath("//div[@class='a-section a-spacing-small a-spacing-top-small']"));
+        String aramaSonucuStr=aramaSonucu.getText();
+        Assert.assertTrue(aramaSonucuStr.contains("Java"));
+
+
 
         // 7- ikinci sayfaya(bestbuy) donelim
-        driver.switchTo().window(secondHandle);
+        driver.switchTo().window(sayfa2Handle);
+
 
         // 8- logonun gorundugunu test edelim
-        WebElement logo = driver.findElement(By.xpath("(//*[@class='logo'])[1]"));
+        WebElement logo=driver.findElement(By.xpath("(//img[@class='logo'])[1]"));
         Assert.assertTrue(logo.isDisplayed());
+
+
+
+
+
+
+
+
     }
 }
