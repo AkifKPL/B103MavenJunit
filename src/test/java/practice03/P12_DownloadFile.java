@@ -39,5 +39,6 @@ public class P12_DownloadFile extends TestBase {
         //"C:\Users\Lenovo\Downloads\chromedriver_win32.zip"
         String dosyaYolu = System.getProperty("user.home")+"\\Downloads\\chromedriver_win32.zip";
         assert Files.exists(Paths.get(dosyaYolu));
+
     }
 }

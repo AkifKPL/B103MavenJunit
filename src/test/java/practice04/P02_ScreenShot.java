@@ -1,9 +1,7 @@
 package practice04;
 import org.apache.commons.io.FileUtils;
 import org.junit.Test;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.WindowType;
+import org.openqa.selenium.*;
 import utilities.TestBase;
 import java.io.File;
 import java.io.IOException;
@@ -20,6 +18,7 @@ public class P02_ScreenShot extends TestBase {
     public void name() throws IOException, InterruptedException {
         //Amazon sayfasına gidelim
         driver.get("https://amazon.com");
+
         //Tüm sayfanın resmini alalım
         tarih = new SimpleDateFormat("hh_mm_ss_ddMMyyyy").format(new Date());
         TakesScreenshot ts = (TakesScreenshot) driver;
@@ -35,8 +34,14 @@ public class P02_ScreenShot extends TestBase {
         tarih = new SimpleDateFormat("hh_mm_ss_ddMMyyyy").format(new Date());
         FileUtils.copyFile(ts.getScreenshotAs(OutputType.FILE),new File("target/tumSayfaResmi/tumSayfa"+tarih+".jpeg"));
         //Tekrar amazon sayfasına dönüp iphone aratalım
-        // Driver.back
+        driver.get("https://amazon.com");
+        driver.findElement(By.xpath("//*[@id='twotabsearchtextbox']")).sendKeys("iphone", Keys.ENTER);
         //Arama sonucunun resmini alalım
+        tarih = new SimpleDateFormat("hh_mm_ss_ddMMyyyy").format(new Date());
+        TakesScreenshot amazonSayfaResmi=(TakesScreenshot) driver;
+        FileUtils.copyFile(amazonSayfaResmi.getScreenshotAs(OutputType.FILE),new File("target/tumSayfaResmi/tumSayfa"+tarih+".jpeg"));
+
+
         //sonuc elementini locate edip webelmente assine edin
         //FileUtils.copyFile(WE.getScreenshotAs(OutputType.FILE),new File("target/tumSayfaResmi/tumSayfa"+tarih+".jpeg"));
     }
