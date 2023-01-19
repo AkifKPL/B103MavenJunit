@@ -19,9 +19,10 @@ public class P02_Cookie extends TestBase {
     //Oluşturduğumuz cookie'i silelim
     //Tüm cookieleri silelim
     @Test
-    public void test01() {
+    public void test01() throws InterruptedException {
         //Techproeducation adresine gidiniz
         driver.get("https://techproeducation.com");
+        Thread.sleep(5000);
         //Sayfadaki cookie lerin sayısını yazdırınız
         Set<Cookie> cookies = driver.manage().getCookies();
         System.out.println("Cookilerin Sayısı = "+cookies.size());
@@ -35,8 +36,14 @@ public class P02_Cookie extends TestBase {
         //Yeni cookie eklendikten sonra cookie sayısını ve isimlerini yazdırınız
         Set<Cookie> cookies2 = driver.manage().getCookies();
         System.out.println("Cookilerin Sayısı = "+cookies2.size());
-
+        for (Cookie w:cookies2) {
+            System.out.println(w.getName() + ":" + w.getValue());
+        }
         //Oluşturduğumuz cookie'i silelim
+        driver.manage().deleteCookie(myCookie);
         //Tüm cookieleri silelim
+        driver.manage().deleteAllCookies();
+        Set<Cookie> cookies3 = driver.manage().getCookies();
+        System.out.println(cookies3.size());
     }
 }

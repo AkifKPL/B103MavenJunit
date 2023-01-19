@@ -23,6 +23,7 @@ public class C02_Screenshot2 extends TestBase {
 //        Path of screenshot save folder               folder / folder    /file name
         String path = System.getProperty("user.dir")+"/test-output/Screenshots/"+currentTime+"image.png";
         FileUtils.copyFile(image,new File(path));
-
+//        LOGONUN EKRAN GORUNTUSUNU AL
+        takeScreenshotOfElement(driver.findElement(By.xpath("//div[@data-id='898ce2e']")));
     }
 }
