@@ -10,7 +10,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 public class C01_ExtentReports2 {
     //    HATIRLAMAMIZ GEREKEN 3 CLASS
-    protected static ExtentReports extentReports;
+    public static ExtentReports extentReports;
     protected static ExtentHtmlReporter extentHtmlReporter;
     protected static ExtentTest extentTest;
     @BeforeClass

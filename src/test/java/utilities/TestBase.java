@@ -1,4 +1,6 @@
 package utilities;
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.commons.io.FileUtils;
 import org.junit.After;
@@ -236,6 +238,7 @@ public abstract class TestBase {
 //             document.querySelector(".example").value; -> CSS DEGERI KULLANILABILIR
 //             document.querySelector("#example").value; -> CSS DEGERI KULLANILABILIR
     }
+
 }
 
 

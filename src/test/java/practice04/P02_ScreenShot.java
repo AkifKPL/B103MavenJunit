@@ -18,7 +18,7 @@ public class P02_ScreenShot extends TestBase {
     public void name() throws IOException, InterruptedException {
         //Amazon sayfasına gidelim
         driver.get("https://amazon.com");
-
+        String amazonSayfasi = driver.getWindowHandle();
         //Tüm sayfanın resmini alalım
         tarih = new SimpleDateFormat("hh_mm_ss_ddMMyyyy").format(new Date());
         TakesScreenshot ts = (TakesScreenshot) driver;
@@ -29,20 +29,18 @@ public class P02_ScreenShot extends TestBase {
          */
         //Yeni bir sekmede techproeducation sayfasına gidip sayfanın resmini alalım
         Thread.sleep(6000);
-        driver.switchTo().newWindow(WindowType.TAB);
+        driver.switchTo().newWindow(WindowType.TAB); //Yeni bir sekme açtık
         driver.get("https://techproeducation.com");
         tarih = new SimpleDateFormat("hh_mm_ss_ddMMyyyy").format(new Date());
         FileUtils.copyFile(ts.getScreenshotAs(OutputType.FILE),new File("target/tumSayfaResmi/tumSayfa"+tarih+".jpeg"));
         //Tekrar amazon sayfasına dönüp iphone aratalım
-        driver.get("https://amazon.com");
-        driver.findElement(By.xpath("//*[@id='twotabsearchtextbox']")).sendKeys("iphone", Keys.ENTER);
+        driver.switchTo().window(amazonSayfasi);
+        driver.findElement(By.id("twotabsearchtextbox")).sendKeys("iphone", Keys.ENTER);
         //Arama sonucunun resmini alalım
-        tarih = new SimpleDateFormat("hh_mm_ss_ddMMyyyy").format(new Date());
-        TakesScreenshot amazonSayfaResmi=(TakesScreenshot) driver;
-        FileUtils.copyFile(amazonSayfaResmi.getScreenshotAs(OutputType.FILE),new File("target/tumSayfaResmi/tumSayfa"+tarih+".jpeg"));
-
-
+        WebElement sonuc = driver.findElement(By.xpath("(//*[@class='a-section a-spacing-small a-spacing-top-small'])[1]"));
+        FileUtils.copyFile(sonuc.getScreenshotAs(OutputType.FILE),new File("target/WebElementScreenShot/WEScreenShot"+tarih+".jpeg"));
         //sonuc elementini locate edip webelmente assine edin
+
         //FileUtils.copyFile(WE.getScreenshotAs(OutputType.FILE),new File("target/tumSayfaResmi/tumSayfa"+tarih+".jpeg"));
     }
 }
